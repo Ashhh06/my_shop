@@ -1,0 +1,94 @@
+
+
+
+/* static/css/style.css */
+
+/* Base styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #231e1a;
+    color: #fff;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 800px;
+    margin: 50px auto;
+    background: linear-gradient(135deg, #231e1a, #6f6a66);
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+}
+
+h1 {
+    text-align: center;
+    color: #a79e8f;
+    margin-bottom: 20px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.order-details {
+    border-top: 1px solid #a79e8f;
+    margin-top: 20px;
+    padding-top: 20px;
+}
+
+.order-details p {
+    font-size: 16px;
+    line-height: 1.6;
+    margin: 10px 0;
+}
+
+.order-details strong {
+    display: inline-block;
+    width: 150px;
+    color: #a79e8f;
+}
+
+.progress-container {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    margin: 30px 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+.progress-step {
+    text-align: center;
+    width: 20%;
+    position: relative;
+}
+
+.progress-step::before {
+    content: '';
+    width: 100%;
+    height: 4px;
+    background-color: #777672;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: -1;
+    transform: translateX(-50%);
+}
+
+.progress-step::after {
+    content: attr(data-step);
+    display: inline-block;
+    padding: 10px;
+    background-color: #777672;
+    border-radius: 50%;
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #231e1a;
+    font-weight: bold;
+}
+
+.progress-step.completed::before,
+.progress-step.completed::after {
+    background-color: #a79e8f;
+    color: #231e1a;
+}
