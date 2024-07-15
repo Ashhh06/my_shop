@@ -1,0 +1,16 @@
+{% extends 'master.html' %}
+{% block body %}
+<div class="container">
+    <h2 class="title text-center" style="background-color: #777672; border-color: A79E8F; -webkit-text-fill-color: #231E1A;">YOU HAVE BEEN LOGGED OUT.</h2>
+</div>
+<div class="container text-center">
+    <img src="/static/images/self_added/logged_out.png" alt="">
+</div>
+<div class="text-center">
+    <h1>You can now <a href="{% url 'login' %}">login</a> again.</h1>
+</div>
+<div class="text-center">
+    <h1>Or Return to <a href="{% url 'index' %}">Homepage</a></h1>
+</div>
+
+{% endblock %}

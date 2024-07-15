@@ -1,0 +1,83 @@
+<!-- templates/ecommerce/orderstatus.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Order Status</title>
+    <link rel="stylesheet" href="/static/css/orderstatus.css">
+    <style>
+        .progress-container {
+            display: flex;
+            justify-content: space-between;
+            position: relative;
+            margin: 30px 0;
+            padding: 0;
+            list-style-type: none;
+        }
+        .progress-step {
+            text-align: center;
+            width: 20%;
+            position: relative;
+        }
+        .progress-step::before {
+            content: '';
+            width: 100%;
+            height: 4px;
+            background-color: #ddd;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            z-index: -1;
+            transform: translateX(-50%);
+        }
+        .progress-step::after {
+            content: attr(data-step);
+            display: inline-block;
+            padding: 10px;
+            background-color: #ddd;
+            border-radius: 50%;
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .progress-step.active::before,
+        .progress-step.active::after {
+            background-color: #4caf50;
+        }
+        .progress-step.completed::before,
+        .progress-step.completed::after {
+            background-color: #4caf50;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Order Status</h1>
+        <div class="order-details">
+            <p><strong>Order ID:</strong> {{ order.order_id }}</p>
+            <p><strong>Name:</strong> {{ order.name }}</p>
+            <p><strong>Email:</strong> {{ order.email }}</p>
+            <p><strong>City:</strong> {{ order.city }}</p>
+            <p><strong>State:</strong> {{ order.state }}</p>
+            <p><strong>Product:</strong> {{ order.product }}</p>
+            <p><strong>Quantity:</strong> {{ order.quantity }}</p>
+            <p><strong>Price:</strong> ${{ order.price }}</p>
+            <p><strong>Total:</strong> ${{ order.total }}</p>
+            <p><strong>Address:</strong> {{ order.address }}</p>
+            <p><strong>Phone:</strong> {{ order.phone }}</p>
+            <p><strong>Pincode:</strong> {{ order.pincode }}</p>
+            <p><strong>Date:</strong> {{ order.date }}</p>
+            <p><strong>Status:</strong> {{ order.get_order_status_display }}</p>
+        </div>
+        <ul class="progress-container">
+            <li class="progress-step {% if order.order_status >= 1 %}completed{% endif %}" data-step="Pending"></li>
+            <li class="progress-step {% if order.order_status >= 2 %}completed{% endif %}" data-step="Dispatch"></li>
+            <li class="progress-step {% if order.order_status >= 3 %}completed{% endif %}" data-step="On the way"></li>
+            <li class="progress-step {% if order.order_status >= 4 %}completed{% endif %}" data-step="Delivered"></li>
+            <li class="progress-step {% if order.order_status >= 5 %}completed{% endif %}" data-step="Cancel"></li>
+            <li class="progress-step {% if order.order_status >= 6 %}completed{% endif %}" data-step="Return"></li>
+        </ul>
+    </div>
+</body>
+</html>
